@@ -8,7 +8,8 @@ void init(int sized)//initialises the window based on left and right values
 {
 	{
 		int i;
-		if(righ>sized-1) lef=righ-sized+1;
+		if(righ>sized-1)
+			lef=righ-sized+1;
 		window.assign(text,lef,righ-lef+1);//copies values from text string
 	}
 	//cout<<window<<endl;
@@ -24,7 +25,10 @@ void mlp(int sized)//1a) returns the code for the letter pointer
 	c=window.rfind(temp);//returns the index of the rightmost occurence of given character
 	//		cout<<temp<<" "<<window<<endl;
 	//		cout<<lef<<" "<<righ<<" "<<c<<endl;
-	if(c==-1) {righ++;printf("(0,%c)\n",temp[0]);pointer++;}//if the character isn't present in window,it's code is returned here
+	if(c==-1)
+	{
+		righ++;printf("(0,%c)\n",temp[0]);pointer++; //if the character isn't present in window,it's code is returned here
+	}
 	else 
 	{
 		//	c=window.find(temp);
@@ -40,21 +44,27 @@ void mlp(int sized)//1a) returns the code for the letter pointer
 			//		cout<<temp<<" "<<window<<endl;
 			//		cout<<lef<<" "<<righ<<" "<<c<<endl;
 		}
-		if(c==-1) printf("(1,%d,%d)\n",j,(int)temp.size()-1);//prints the code for word
-		else printf("(1,%d,%d)\n",j,(int)temp.size());
+		if(c==-1)
+		{	
+			printf("(1,%d,%d)\n",j,(int)temp.size()-1);//prints the code for word
+		}
+		else
+		{	printf("(1,%d,%d)\n",j,(int)temp.size());
+		}
 	}
 }
 
 
 void parse(int sized)//1b) outputs the source code for given text
 {
-	righ++;printf("(0,%c)\n",text[0]);pointer++;//adds the 1st character of the text to window
+	righ++;
+	printf("(0,%c)\n",text[0]);
+	pointer++;//adds the 1st character of the text to window
 	while(pointer<text.size())
 	{
 		mlp(sized);//runs the function mlp repeatedly
 	}
 	return;
-
 }
 int main()
 {
